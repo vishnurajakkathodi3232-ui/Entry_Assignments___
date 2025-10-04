@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0d1b2a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background: #1b263b;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      width: 300px;
+      transition: transform 0.3s ease;
+    }
+    .calculator:hover {
+      transform: scale(1.02);
+    }
+    .display {
+      background: #0d1b2a;
+      color: #00b4d8;
+      font-size: 1.6em;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      text-align: right;
+      overflow-x: auto;
+      min-height: 40px;
+      transition: background 0.3s ease;
+    }
+    .result-preview {
+      color: #ff4d6d;
+      font-size: 1em;
+      text-align: right;
+      min-height: 20px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    button {
+      padding: 15px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      background: #415a77;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.3s;
+    }
+    button:hover {
+      background: #e63946;
+      transform: translateY(-3px);
+    }
+    button:active {
+      transform: translateY(0);
+    }
+    button.operator {
+      background: #1d3557;
+      color: #ff4d6d;
+      font-weight: bold;
+    }
+    button.equal {
+      background: #0077b6;
+      grid-column: span 2;
+    }
+    button.clear {
+      background: #e63946;
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div id="display" class="display">0</div>
+    <div id="preview" class="result-preview">Result: 0</div>
+    <div class="buttons">
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button class="operator" onclick="appendValue('/')">÷</button>
+
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button class="operator" onclick="appendValue('*')">×</button>
+
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button class="operator" onclick="appendValue('-')">−</button>
+
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
+      <button class="equal" onclick="calculateFinal()">=</button>
+      <button class="operator" onclick="appendValue('+')">+</button>
+
+      <button class="clear" onclick="clearDisplay()">Clear</button>
+      <button onclick="backspace()">⌫</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    const preview = document.getElementById('preview');
+
+    function appendValue(value) {
+      if (display.textContent === '0' || display.textContent === 'Error') {
+        display.textContent = value;
+      } else {
+        display.textContent += value;
+      }
+      updatePreview();
+    }
+
+    function clearDisplay() {
+      display.textContent = '0';
+      preview.textContent = 'Result: 0';
+    }
+
+    function backspace() {
+      let current = display.textContent;
+      display.textContent = current.length > 1 ? current.slice(0, -1) : '0';
+      updatePreview();
+    }
+
+    function calculateFinal() {
+      try {
+        display.textContent = eval(display.textContent);
+        preview.textContent = 'Result: ' + display.textContent;
+      } catch {
+        display.textContent = 'Error';
+        preview.textContent = 'Result: Error';
+      }
+    }
+
+    function updatePreview() {
+      try {
+        let result = eval(display.textContent);
+        if (!isNaN(result)) {
+          preview.textContent = 'Result: ' + result;
+        } else {
+          preview.textContent = 'Result: 0';
+        }
+      } catch {
+        preview.textContent = 'Result: 0';
+      }
+    }
+  </script>
+</body>
+</html>
