@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Successful</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #35f49b, #024310); /* Orange celebratory theme */
+      color: #fff;
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      animation: slideUp 1.2s ease;
+      position: relative;
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      animation: scaleUp 1.5s ease;
+    }
+    .btn {
+      display: inline-block;
+      background: #fff;
+      color: #062612;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: #ff5e62;
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    /* Confetti effect */
+    .container::before, .container::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      top: 0;
+      left: 50%;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: fall 3s linear infinite;
+    }
+    .container::after {
+      left: 30%;
+      background: yellow;
+      animation-delay: 1s;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-50px) scale(1); opacity: 1; }
+      100% { transform: translateY(500px) scale(0.5); opacity: 0; }
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes slideUp {
+      from {transform: translateY(50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+    @keyframes scaleUp {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @media (max-width: 500px) {
+      .container {
+        width: 95%;
+        padding: 25px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Registration Successful 🎉</h1>
+    <a href="home.html" class="btn">Go to Home</a>
+  </div>
+</body>
+</html>

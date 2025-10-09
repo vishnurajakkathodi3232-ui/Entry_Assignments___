@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #001f3f, #0074D9); 
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      max-width: 450px;
+      width: 90%;
+      animation: slideUp 1s ease;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 14px;
+    }
+
+    input::placeholder {
+      color: #eee;
+    }
+
+    select option {
+      color: #000;
+    }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .radio-group input, .checkbox-group input {
+      margin-right: 5px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px;
+      background: #fff;
+      color: #001f3f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #001f3f;
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideUp {
+      from {transform: translateY(50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }   
+    @media (max-width: 500px) {
+      .form-container {
+        width: 95%;
+        padding: 20px;
+      }
+      .radio-group, .checkbox-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+      .btn-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form action="register-success.html" method="get">
+      <label>Full Name</label>
+      <input type="text" name="fullname" placeholder="Enter full name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Enter email" required>
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" placeholder="1234567890" required>
+
+      <label>Gender</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="male" required> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+        <label><input type="radio" name="gender" value="others"> Others</label>
+      </div>
+
+      <label>Hobbies</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="hobby" value="Sports"> Sports</label>
+        <label><input type="checkbox" name="hobby" value="Music"> Music</label>
+        <label><input type="checkbox" name="hobby" value="Reading"> Reading</label>
+        <label><input type="checkbox" name="hobby" value="Movies"> Movies</label>
+      </div>
+
+      <label>Date of Birth</label>
+      <input type="date" name="dob" required>
+
+      <label>Country</label>
+      <select name="country" required>
+        <option value="">--Select--</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+      </select>
+
+      <div class="btn-group">
+        <input type="reset" class="btn" value="Reset">
+        <input type="submit" class="btn" value="Register">
+      </div>
+    </form>
+  </div>
+</body>
+</html>
